@@ -94,7 +94,7 @@
     }
     .hero-overlay {
       position:absolute; inset:0; background:linear-gradient(to bottom, rgba(0,0,0,.32), rgba(0,0,0,.18)); }
-    .hero-center { position:relative; z-index:2; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:0 20px; max-height:100%; overflow:visible; width:100%; }
+    .hero-center { position:relative; z-index:2; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:0 20px; max-height:100%; overflow:visible; width:100%; transform:translateY(-40px);}
     .hero-event-tag {
       font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.3em; text-transform:uppercase;
       color:rgba(255,255,255,.96); border:1px solid rgba(255,255,255,.3); padding:7px 20px; background:rgba(255,255,255,.05);
@@ -1050,7 +1050,7 @@
          <p class="policy-h">Booking Policy</p>
          <ul class="policy-ul">
           <li>房價均為商明活動專屬優惠價格。</li>
-          <li><strong>訂房區間限 5/12、5/13、5/14</strong>，其他日期恕無專屬優惠。</li>
+          <li><strong>訂房區間限 5/12、5/13、5/14</strong>，其它日期恕無專屬優惠。</li>
           <li>因房源有限，訂房成功以商明確認回覆為準。</li>
           <li>付款方式：刷卡或現金匯款，將於確認後另行通知。</li>
          </ul>
@@ -1881,7 +1881,9 @@
       updateStats();
       renderBookingTable();
       syncRoomAvailability();
-      showToast(endpoint() ? '訂單資料已同步' : '已載入本機預覽資料');
+      if (els.adminPanel.style.display === 'block') {
+        showToast(endpoint() ? '訂單資料已同步' : '已載入本機預覽資料');
+      }
     }
 
     // ── 更新統計數字卡片 ──
