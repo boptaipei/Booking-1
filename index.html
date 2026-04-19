@@ -382,6 +382,13 @@
     .sub-btn { width:100%; padding:18px; background:var(--text); color:var(--white); border:none; margin-top:32px; cursor:pointer; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:14px; }
     .back-register-btn { display:flex; align-items:center; justify-content:center; width:100%; padding:18px; margin-top:35px; background:transparent; border:1px solid var(--line); color:var(--text-4); font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; transition:color .2s, border-color .2s; }
     .back-register-btn:hover { color:#ffcc03; border-color:#ffcc03; }
+    .rooms-list { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
+    .room-item { display:flex; align-items:stretch; gap:0; border:1px solid var(--line); background:#fff; }
+    .room-item-select { flex:1; padding:10px 14px; border:none; background:transparent; font-size:13px; color:var(--text); cursor:pointer; appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; padding-right:32px; }
+    .room-item-x { width:36px; flex-shrink:0; border:none; border-left:1px solid var(--line); background:transparent; color:var(--text-4); cursor:pointer; font-size:16px; line-height:1; transition:.15s; display:flex; align-items:center; justify-content:center; }
+    .room-item-x:hover { background:var(--danger); color:#fff; border-color:var(--danger); }
+    .add-room-btn { padding:9px 18px; border:1px dashed var(--line); background:transparent; color:var(--text-3); cursor:pointer; font-size:11px; font-family:'Geist',sans-serif; letter-spacing:.08em; transition:.2s; width:100%; }
+    .add-room-btn:hover { background:var(--text); color:#fff; border-color:var(--text); }
     .sub-note { text-align:center; margin-top:14px; font-family:'Geist',sans-serif; font-size:12px; font-weight:500; letter-spacing:.03em; color:var(--text-4); line-height:1.8; }
     .form-tools { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:20px; }
     .jump-rooms { font-family:'Geist',sans-serif; font-size:12px; font-weight:500; letter-spacing:.03em; color:var(--text-4); cursor:pointer; }
@@ -1381,6 +1388,21 @@
         const selected = getSelectedRooms().filter(function(r) { return r.split('｜')[0] === roomName; }).length;
         if (selected >= remain) {
           setStatus('error', '「' + roomName + '」剩餘名額不足（剩 ' + remain + ' 間），無法繼續新增。');
+          return;
+        }
+        // 若有空白列，直接填入而非新增
+        const emptyRow = Array.from(els.roomsList.querySelectorAll('.room-item')).find(function(row) {
+          const sel = row.querySelector('.room-item-select');
+          return sel && !sel.value;
+        });
+        if (emptyRow) {
+          const sel = emptyRow.querySelector('.room-item-select');
+          const roomObj = ROOM_DATA.find(function(r) { return r.name === roomName; });
+          sel.value = formatRoomValue(roomObj);
+          syncRoomXButtons();
+          updateRoomsBar();
+          updateRoomCardHighlights();
+          updateRoomPreview(roomName);
           return;
         }
       }
