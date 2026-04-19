@@ -146,11 +146,12 @@
     .intro-overline::before, .intro-overline::after { content:''; width:60px; height:1px; background:rgba(17,16,13,.14); }
     .intro-h { font-family:'Noto Serif TC',serif; font-size:clamp(24px,3vw,40px); font-weight:300; letter-spacing:.12em; color:var(--text); line-height:1.6; margin-bottom:24px; }
     .intro-p { max-width:620px; margin:0 auto 40px; font-size:15px; font-weight:400; color:var(--text-3); line-height:2; }
+    .intro-mobile-break { display:none; }
     .intro-divider { width:70px; height:1px; background:#FEDD03; margin:0 auto; }
 
     /* ── 酒店特色介紹區塊（圖文交錯排版） ── */
     .feature-wrap { padding:12px 24px 88px; }
-    .feature-block { position:relative; max-width:1460px; margin:0 auto 118px; }
+    .feature-block { position:relative; max-width:1460px; margin:0 auto 118px; max-width:100%; overflow-x:hidden; }
     .feature-bg { position:absolute; left:0; right:0; bottom:0; height:82.5%; background:var(--panel); }
     .feature-content { position:relative; display:grid; grid-template-columns:1fr 1fr; align-items:end; gap:0; }
     .feature-block.reverse .feature-content { direction:rtl; }
@@ -179,14 +180,14 @@
     .feature-kv { border-top:1px solid var(--line); max-width:620px; margin-top:48px; }
     .feature-kv-row { display:flex; justify-content:space-between; align-items:center; padding:13px 0; border-bottom:1px solid var(--line-2); gap:16px; }
     .feature-k { font-family:'Geist',sans-serif; font-size:12px; font-weight:500; letter-spacing:.06em; color:var(--text-4); }
-    .feature-v { font-size:14px; font-weight:500; color:var(--text-2); text-align:right; }
+    .feature-v { flex:1; font-size:14px; font-weight:500; color:var(--text-2); text-align:right; }
 
     /* ── 住宿方案（房型選擇）卡片區 ── */
     .rooms-sec { background:var(--white); padding:74px 24px 90px; }
     .rooms-inner { max-width:1280px; margin:0 auto; }
     .sec-header { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:52px; }
     .sec-tag { font-family:'Geist',sans-serif; font-size:11px; font-weight:500; letter-spacing:.24em; text-transform:uppercase; color:var(--text-4); display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-    .sec-tag::before { content:''; width:18px; height:1px; background:var(--yellow); }
+    .sec-tag::before { content:''; width:18px; height:1px; background:#ffcc03; }
     .sec-h { font-family:'Noto Serif TC',serif; font-size:clamp(24px,2.6vw,36px); font-weight:300; color:var(--text); letter-spacing:.08em; line-height:1.35; }
     .sec-notice { font-family:'Geist',sans-serif; font-size:12px; font-weight:500; color:var(--text); background:var(--yellow-soft); border-left:2px solid var(--yellow); padding:8px 16px; line-height:1.6; max-width:280px; }
     .rooms-note { font-size:14px; font-weight:400; color:var(--text-3); line-height:1.9; margin:-28px 0 22px; }
@@ -211,11 +212,11 @@
     .ri-carousel .carousel-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.5); cursor:pointer; transition:background .18s; border:none; padding:0; }
     .ri-carousel .carousel-dot.active { background:#fff; }
     .ri-carousel .ri-tag { position:absolute; left:0; bottom:0; font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; background:var(--text); color:var(--white); padding:6px 14px; z-index:4; }
-    .ri-ctrl { display:flex; align-items:center; justify-content:space-between; padding:10px 14px 8px; background:transparent; gap:10px; }
+    .ri-ctrl { position:relative; display:flex; align-items:center; justify-content:space-between; padding:10px 24px 8px 24px; background:transparent; gap:10px; }
     .ri-ctrl--simple { justify-content:flex-start; }
     .detail-btn { font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); background:transparent; border:1px solid rgba(17,16,13,.14); padding:4px 10px; cursor:pointer; transition:.15s; flex-shrink:0; }
     .detail-btn:hover { background:var(--text); color:var(--white); border-color:var(--text); }
-    .carousel-counter { font-family:'Geist',sans-serif; font-size:11px; color:var(--text-4); letter-spacing:.04em; flex:1; text-align:center; }
+    .carousel-counter { font-family:'Geist',sans-serif; font-size:11px; color:var(--text-4); letter-spacing:.04em; position:absolute; left:50%; transform:translateX(-50%); pointer-events:none; }
     .ri-nav { display:flex; }
     .ri-nav .carousel-btn { --arr-v-offset:-2px; width:28px; height:28px; background:transparent; border:1px solid rgba(17,16,13,.14); color:var(--text-2); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.15s; line-height:1; position:relative; }
     .ri-nav .carousel-btn span { display:inline-block; transform:translateY(var(--arr-v-offset)); }
@@ -368,7 +369,7 @@
     .policy-h { font-family:'Geist',sans-serif; font-size:10px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--text-4); margin-bottom:12px; }
     .policy-ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
     .policy-ul li { position:relative; padding-left:16px; font-size:13px; font-weight:400; color:var(--text-3); line-height:1.8; }
-    .policy-ul li::before { content:'—'; position:absolute; left:0; color:var(--yellow); }
+    .policy-ul li::before { content:'—'; position:absolute; left:0; color:#ffcc03; }
     .sub-btn { width:100%; padding:18px; background:var(--text); color:var(--white); border:none; margin-top:32px; cursor:pointer; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:14px; }
     .sub-note { text-align:center; margin-top:14px; font-family:'Geist',sans-serif; font-size:12px; font-weight:500; letter-spacing:.03em; color:var(--text-4); line-height:1.8; }
     .form-tools { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:8px; }
@@ -405,7 +406,7 @@
     .accord-icon { width:20px; height:20px; flex-shrink:0; position:relative; }
     .accord-icon::before { content:''; position:absolute; width:10px; height:1.5px; background:var(--text-3); top:50%; left:50%; transform:translate(-50%,-50%); }
     .accord-icon::after { content:''; position:absolute; width:1.5px; height:10px; background:var(--text-3); top:50%; left:50%; transform:translate(-50%,-50%); transition:transform .2s, opacity .2s; }
-    .accord.open .accord-icon::after { transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
+    .accord.open > .accord-hd .accord-icon::after { transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
     .sub-accord.open .accord-icon::after { transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
     .accord-body { border-top:1px solid var(--line-2); padding:0; }
     .sub-accord-list { display:flex; flex-direction:column; }
@@ -619,11 +620,17 @@
       /* 頁面區段 padding */
       .feature-wrap, .rooms-sec, .form-sec, .trans-sec, .intro-sec, .notes-sec { padding-left:16px; padding-right:16px; }
       /* Feature blocks */
+      .feature-tag::after { display:none; }
+      .feature-block:nth-of-type(1) .feature-tag::after,
+      .feature-block:nth-of-type(3) .feature-tag::after { display:block; }
+      .feature-bg { height:85%; }
+      .feature-img, .feature-block.reverse .feature-img { padding:0 20px; transform:translateY(-22px); }
       .feature-img-inner { height:260px; }
       .feature-text { padding:28px 16px 28px; position:relative; overflow:visible; }
-      .feature-number { position:absolute; right:12px; left:auto; top:-55px; z-index:3; font-size:170px; line-height:.75; }
+      .feature-number { position:absolute; right:-12px; left:auto; top:-75px; z-index:3; font-size:170px; line-height:.75; }
       .feature-copy { margin-top:0; padding-top:0; }
       .feature-img-inner img, .ri img { object-position:var(--obj-pos-mobile,var(--obj-pos,50% 50%)); }
+      .intro-mobile-break { display:block; }
       .feature-block:nth-of-type(1) .feature-img img { --obj-pos-mobile:62% 46%; }
       .feature-block:nth-of-type(2) .feature-img img { --obj-pos-mobile:50% 34%; }
       .feature-block:nth-of-type(3) .feature-img img { --obj-pos-mobile:52% 44%; }
@@ -783,7 +790,7 @@
    <section class="intro-sec">
     <p class="intro-overline">Exclusive Stay · 商明特約住宿</p>
     <h2 class="intro-h">為論壇多留一段從容的時間</h2>
-    <p class="intro-p">商明國際 2026 領袖論壇企業主，獨享將捷鬱金香酒店「專屬優惠」房價。<br>淡水河岸、藍天白雲，全棟景觀客房坐擁絕美視野，<br>讓您在論壇前後以最佳狀態，迎接每一場對話與收穫。</p>
+    <p class="intro-p">商明國際 2026 領袖論壇企業主，<br class="intro-mobile-break">獨享將捷鬱金香酒店「專屬優惠」房價。<br>淡水河岸、藍天白雲，全棟景觀客房坐擁絕美視野，<br>讓您在論壇前後以最佳狀態，迎接每一場對話與收穫。</p>
     <div class="intro-divider"></div>
    </section>
 
@@ -858,7 +865,7 @@
         <h3 class="feature-title">論壇場地就在<br>酒店園區</h3>
         <p class="feature-desc">商明領袖論壇活動場地設於酒店「貝殼廳」，住客步行即達。活動後漫步返房，讓您有充裕的時間沉澱，迎接全新的思維躍升。</p>
         <div class="feature-kv">
-         <div class="feature-kv-row"><span class="feature-k">活動場地</span><span class="feature-v">貝殼廳 · 館內</span></div>
+         <div class="feature-kv-row"><span class="feature-k">活動場地</span><span class="feature-v">貝殼廳 · 館內&ensp;</span></div>
          <div class="feature-kv-row"><span class="feature-k">活動日期</span><span class="feature-v">2026 / 05 / 13（三）</span></div>
          <div class="feature-kv-row"><span class="feature-k">優惠期間</span><span class="feature-v">5 / 12 入住 － 5 / 14 退房（可依需求日期訂房）</span></div>
         </div>
@@ -1284,6 +1291,13 @@
        JavaScript 主程式
   ══════════════════════════════════ -->
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.addEventListener('pageshow', function() {
+      window.scrollTo(0, 0);
+    });
+
     // ── 後台權限層級（super = 網站維護，admin = 管理者） ──
     const ADMIN_ROLES = { 'boclayla': 'super', 'boc0513': 'admin' };
     var currentRole = null;
@@ -2084,7 +2098,7 @@
     var _hdrEl = document.getElementById('hdr');
     function _onScroll() {
       var sy = window.scrollY || document.documentElement.scrollTop || 0;
-      _hdrEl.classList.toggle('solid', sy > window.innerHeight * 0.38);
+      _hdrEl.classList.toggle('solid', sy > window.innerHeight * 0.5);
       els.backTopBtn.classList.toggle('show', sy > 680);
     }
     window.addEventListener('scroll', _onScroll, { passive: true });
