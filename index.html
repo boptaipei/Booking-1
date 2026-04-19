@@ -207,18 +207,16 @@
     .carousel-counter { font-family:'Geist',sans-serif; font-size:11px; color:var(--text-4); letter-spacing:.04em; flex:1; text-align:center; }
     .ri-nav { display:flex; }
     .ri-nav .carousel-btn { width:28px; height:28px; background:transparent; border:1px solid rgba(17,16,13,.14); color:var(--text-2); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.15s; line-height:1; position:relative; }
-    .ri-nav .carousel-btn span { display:inline-block; transform:translateY(-2px); }
     .ri-nav .carousel-btn:hover { background:var(--text); color:var(--white); border-color:var(--text); }
     .ri-nav .carousel-prev { border-right:none; }
     /* ── 房型詳細說明 Modal ── */
     .room-modal-overlay { display:none; position:fixed; inset:0; background:rgba(17,16,13,.72); z-index:3000; align-items:center; justify-content:center; padding:24px 16px; }
     .room-modal-overlay.open { display:flex; }
-    .room-modal { background:var(--white); width:100%; max-width:820px; max-height:90vh; display:flex; flex-direction:row; position:relative; overflow:hidden; }
+    .room-modal { background:var(--white); width:100%; max-width:900px; max-height:90vh; display:flex; flex-direction:column; position:relative; overflow:hidden; }
     .rmo-close { position:absolute; top:12px; right:12px; background:rgba(17,16,13,.52); color:#fff; border:none; width:32px; height:32px; cursor:pointer; font-size:20px; z-index:10; display:flex; align-items:center; justify-content:center; line-height:1; transition:.15s; }
     .rmo-close:hover { background:var(--text); }
-    /* 左欄：圖片 */
-    .rmo-media-col { width:50%; flex-shrink:0; display:flex; flex-direction:column; border-right:1px solid var(--line-2); }
-    .rmo-carousel { position:relative; flex:1; overflow:hidden; background:#e7e1d8; min-height:0; }
+    /* 頂部：圖片（與下方說明各佔一半） */
+    .rmo-carousel { position:relative; flex:1; min-height:0; overflow:hidden; background:#e7e1d8; }
     .rmo-carousel .carousel-track { display:flex; height:100%; transition:transform .42s cubic-bezier(.25,.46,.45,.94); }
     .rmo-carousel .carousel-slide { min-width:100%; height:100%; overflow:hidden; flex-shrink:0; }
     .rmo-carousel .carousel-slide img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -226,18 +224,16 @@
     .rmo-carousel .c-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.5); border:none; cursor:pointer; padding:0; transition:.15s; }
     .rmo-carousel .c-dot.active { background:#fff; }
     /* 圖片下方導覽列 */
-    .rmo-ctrl { display:flex; align-items:center; justify-content:space-between; padding:8px 14px; gap:10px; border-top:1px solid var(--line-2); flex-shrink:0; background:var(--white); }
+    .rmo-ctrl { display:flex; align-items:center; justify-content:space-between; padding:8px 14px; gap:10px; border-bottom:1px solid var(--line-2); flex-shrink:0; background:var(--white); }
     .rmo-counter { font-family:'Geist',sans-serif; font-size:11px; color:var(--text-4); flex:1; text-align:center; }
     .rmo-nav { display:flex; }
     .rmo-nav .c-btn { width:30px; height:30px; background:transparent; border:1px solid rgba(17,16,13,.14); color:var(--text-2); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:.15s; line-height:1; }
     .rmo-nav .c-btn span { display:inline-block; transform:translateY(-1px); }
     .rmo-nav .c-btn:hover { background:var(--text); color:var(--white); border-color:var(--text); }
     .rmo-nav .c-prev { border-right:none; }
-    /* 右欄：文字 + 底部 */
-    .rmo-text-col { flex:1; display:flex; flex-direction:column; min-width:0; min-height:0; overflow:hidden; }
     /* 可捲動的文字內容 */
     .rmo-scroll { flex:1; overflow-y:auto; min-height:0; }
-    .rmo-body { padding:22px 22px 16px; }
+    .rmo-body { padding:22px 26px 16px; }
     .rmo-header-row { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:14px; }
     .rmo-header-left { flex:1; }
     .rmo-tag { font-family:'Geist',sans-serif; font-size:9px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--text-4); margin-bottom:5px; }
@@ -255,8 +251,9 @@
     .rmo-sec-title { font-family:'Geist',sans-serif; font-size:9px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--text-4); margin-bottom:10px; }
     /* 設施圖示 */
     .rmo-amenities { display:grid; grid-template-columns:repeat(3,1fr); gap:12px 8px; margin-bottom:16px; }
-    .rmo-amenity { font-size:11.5px; color:var(--text-2); display:flex; flex-direction:column; align-items:center; text-align:center; gap:7px; padding:10px 6px; border-radius:8px; background:var(--bg); }
-    .rmo-amenity svg { color:var(--text-3); }
+    .rmo-amenity { color:var(--text-2); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:7px; padding:10px 6px; border-radius:8px; background:var(--bg); }
+    .rmo-amenity svg { color:var(--text-3); flex-shrink:0; }
+    .rmo-amenity span { font-size:10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
     /* 訂房須知 */
     .rmo-notices-list { padding-left:0; margin:0; list-style:none; }
     .rmo-notices-list li { font-size:11px; color:var(--text-4); line-height:1.85; display:flex; gap:6px; }
@@ -269,10 +266,9 @@
     .rmo-orig { font-family:'Geist',sans-serif; font-size:10px; color:var(--text-4); text-decoration:line-through; margin-top:1px; }
     .rmo-add-btn { background:var(--text); color:var(--white); border:none; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:13px 22px; cursor:pointer; transition:.2s; white-space:nowrap; }
     .rmo-add-btn:hover { background:var(--yellow); color:var(--text); }
-    @media (max-width:680px) {
+    @media (max-width:600px) {
       .room-modal-overlay { padding:0; align-items:flex-end; }
-      .room-modal { max-width:100%; max-height:93vh; flex-direction:column; }
-      .rmo-media-col { width:100%; flex-shrink:0; border-right:none; border-bottom:1px solid var(--line-2); height:220px; }
+      .room-modal { max-width:100%; max-height:93vh; }
       .rmo-cols { grid-template-columns:1fr; }
       .rmo-col-right { border-left:none; padding-left:0; border-top:1px solid var(--line-2); padding-top:14px; margin-top:4px; }
       .rmo-amenities { grid-template-columns:repeat(2,1fr); }
@@ -762,8 +758,8 @@
        <div class="feature-copy">
         <div class="feature-number">03</div>
         <p class="feature-tag">Forum On-Site</p>
-        <h3 class="feature-title">論壇場地<br>就在飯店園區</h3>
-        <p class="feature-desc">商明領袖論壇活動場地設於飯店貝殼廳，住客步行即達。活動後信步返房，讓您有充裕的時間沉澱，迎接全新的思維躍升。</p>
+        <h3 class="feature-title">論壇場地就在<br>飯店館內</h3>
+        <p class="feature-desc">商明領袖論壇活動場地設於飯店貝殼廳，住客步行即達。活動後信步返房，，讓您有充裕的時間沉澱，迎接全新的思維躍升。</p>
         <div class="feature-kv">
          <div class="feature-kv-row"><span class="feature-k">活動場地</span><span class="feature-v">貝殼廳 · 館內</span></div>
          <div class="feature-kv-row"><span class="feature-k">活動日期</span><span class="feature-v">2026 / 05 / 13（三）</span></div>
@@ -810,7 +806,7 @@
        <h2 class="sec-h">商明專屬住宿方案</h2>
       </div>
       <div class="sec-notice">
-       📌 需求收集制<br>送出後由商明專人確認房況
+       📌 需求收集制<br>送出後由商明專人協助訂房
       </div>
      </div>
      <p class="rooms-note">以下均為商明特約優惠價，雙人房計費。選擇房型後，可點擊下方提示列，或直接點擊該房卡底部的黃色按鈕，前往填寫詳細住宿資料。</p>
@@ -828,7 +824,7 @@
      </div>
      <p class="sec-tag" style="margin-bottom:10px">Booking Form</p>
      <h2 class="sec-h" style="margin-bottom:20px">提交住宿需求</h2>
-     <div class="f-notice">📌 本頁為住宿<strong> 需求收集 </strong>，送出後由商明專人協助訂房，<strong>24–48 小時內 </strong>回覆確認結果與付款方式。<br>🗓 本次訂房限定區間：<strong>2026 年 5 月 12 日（二）</strong>至 <strong>5 月 14 日（四）</strong>，論壇日為 5/13（三）。</div>
+     <div class="f-notice">📌 本頁為住宿<strong> 需求收集</strong>，送出後由商明專人協助訂房，<strong>24–48 小時內 </strong>回覆確認結果與付款方式。<br>🗓 本次訂房限定區間：<strong>2026 年 5 月 12 日（二）－ 5 月 14 日（四）</strong>，論壇日為 5/13（三）。</div>
 
      <form id="form">
       <div class="fg">
@@ -846,7 +842,7 @@
          <div class="room-select-left">
           <div id="roomsList" class="rooms-list"></div>
           <button type="button" id="addRoomBtn" class="add-room-btn">＋ 新增房間</button>
-          <div class="rdsp" id="rdsp" style="font-size:13px;">請點選上方房型卡片，或點擊「新增房間」選擇房型</div>
+          <div class="rdsp" id="rdsp" style="font-size: 13px;">請點選上方房型卡片，或點擊「新增房間」選擇房型</div>
          </div>
          <div class="room-select-preview" id="roomSelectPreview">
           <div class="room-preview-inner">
@@ -865,7 +861,7 @@
          <input id="checkIn" name="checkIn" type="date" value="2026-05-12" min="2026-05-12" max="2026-05-13" class="date-prefill">
          <input id="checkOut" name="checkOut" type="date" value="2026-05-14" min="2026-05-13" max="2026-05-14" class="date-prefill">
         </div>
-        <span class="fhint">本次訂房限 <strong>5/12（二）- 5/14（四）</strong>，論壇日為 5/13（三）。入住及退房日期限定於此區間內。</span>
+        <span class="fhint">本次訂房限 <strong>5/12（二）、5/13（三）、5/14（四）</strong>，論壇日為 5/13（三）。入住及退房日期限定於此區間內。</span>
        </div>
 
        <!-- 住宿者資訊 -->
@@ -1055,60 +1051,56 @@
   <div class="room-modal-overlay" id="roomModalOverlay">
     <div class="room-modal" id="roomModal">
       <button class="rmo-close" id="rmoClose" type="button" aria-label="關閉">&#215;</button>
-      <!-- 左欄：圖片輪播 -->
-      <div class="rmo-media-col">
-        <div class="rmo-carousel" id="rmoCarousel">
-          <div class="carousel-track" id="rmoTrack"></div>
-          <div class="c-dots" id="rmoDots"></div>
+      <!-- 頂部圖片輪播 -->
+      <div class="rmo-carousel" id="rmoCarousel">
+        <div class="carousel-track" id="rmoTrack"></div>
+        <div class="c-dots" id="rmoDots"></div>
+      </div>
+      <!-- 圖片下方導覽列 -->
+      <div class="rmo-ctrl" id="rmoCtrl">
+        <span></span>
+        <div class="rmo-counter" id="rmoCounter"></div>
+        <div class="rmo-nav">
+          <button class="c-btn c-prev" id="rmoPrev" type="button">&#8249;</button>
+          <button class="c-btn c-next" id="rmoNext" type="button">&#8250;</button>
         </div>
-        <!-- 圖片下方導覽列 -->
-        <div class="rmo-ctrl" id="rmoCtrl">
-          <span></span>
-          <div class="rmo-counter" id="rmoCounter"></div>
-          <div class="rmo-nav">
-            <button class="c-btn c-prev" id="rmoPrev" type="button"><span>&#8249;</span></button>
-            <button class="c-btn c-next" id="rmoNext" type="button"><span>&#8250;</span></button>
+      </div>
+      <!-- 可捲動文字區 -->
+      <div class="rmo-scroll">
+        <div class="rmo-body">
+          <div class="rmo-header-row">
+            <div class="rmo-header-left">
+              <p class="rmo-tag" id="rmoTag"></p>
+              <p class="rmo-en" id="rmoEn"></p>
+              <h2 class="rmo-name" id="rmoName"></h2>
+            </div>
+          </div>
+          <div class="rmo-specs" id="rmoSpecs"></div>
+          <div class="rmo-cols">
+            <div class="rmo-col-left">
+              <p class="rmo-sec-title">房型介紹</p>
+              <p class="rmo-intro" id="rmoIntro"></p>
+              <div class="rmo-room-detail" id="rmoRoomDetail"></div>
+            </div>
+            <div class="rmo-col-right">
+              <p class="rmo-sec-title">設施 / 服務</p>
+              <div class="rmo-amenities" id="rmoAmenities"></div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--line-2); padding-top:16px; margin-top:4px;">
+            <p class="rmo-sec-title">訂房須知</p>
+            <ol class="rmo-notices-list" id="rmoNotices"></ol>
           </div>
         </div>
       </div>
-      <!-- 右欄：文字 + 底部 -->
-      <div class="rmo-text-col">
-        <div class="rmo-scroll">
-          <div class="rmo-body">
-            <div class="rmo-header-row">
-              <div class="rmo-header-left">
-                <p class="rmo-tag" id="rmoTag"></p>
-                <p class="rmo-en" id="rmoEn"></p>
-                <h2 class="rmo-name" id="rmoName"></h2>
-              </div>
-            </div>
-            <div class="rmo-specs" id="rmoSpecs"></div>
-            <div class="rmo-cols">
-              <div class="rmo-col-left">
-                <p class="rmo-sec-title">房型介紹</p>
-                <p class="rmo-intro" id="rmoIntro"></p>
-                <div class="rmo-room-detail" id="rmoRoomDetail"></div>
-              </div>
-              <div class="rmo-col-right">
-                <p class="rmo-sec-title">設施 / 服務</p>
-                <div class="rmo-amenities" id="rmoAmenities"></div>
-              </div>
-            </div>
-            <div style="border-top:1px solid var(--line-2); padding-top:16px; margin-top:4px;">
-              <p class="rmo-sec-title">訂房須知</p>
-              <ol class="rmo-notices-list" id="rmoNotices"></ol>
-            </div>
-          </div>
+      <!-- 底部固定：價格 + 新增按鈕 -->
+      <div class="rmo-ftr-bar">
+        <div>
+          <p class="rmo-price-lbl">商明特約優惠價 / 晚</p>
+          <p class="rmo-price" id="rmoPrice"></p>
+          <p class="rmo-orig" id="rmoOrig"></p>
         </div>
-        <!-- 底部固定：價格 + 新增按鈕 -->
-        <div class="rmo-ftr-bar">
-          <div>
-            <p class="rmo-price-lbl">商明特約優惠價 / 晚</p>
-            <p class="rmo-price" id="rmoPrice"></p>
-            <p class="rmo-orig" id="rmoOrig"></p>
-          </div>
-          <button class="rmo-add-btn" id="rmoAddBtn" type="button">新增此房型</button>
-        </div>
+        <button class="rmo-add-btn" id="rmoAddBtn" type="button">新增此房型</button>
       </div>
     </div>
   </div>
@@ -1124,13 +1116,13 @@
     // ── 房型資料（名稱、特約價、官網原價、名額、圖片、英文名、規格、說明） ──
     const HOTEL_NOTICES = ['入住時間 16:00 後，退房時間 11:00 前。','依菸害防治法，本酒店全面禁菸。','價格及內容有所異動時，不再另行通知。','免費提供嬰兒床、嬰兒澡盆及奶瓶消毒鍋（須事先預定）。','除導盲犬外，酒店禁止攜帶寵物進入。','另有無障礙空間設計客房，歡迎提前預訂。','配合政府政策，酒店自 2023/12/1 起不提供一次性拋棄式備品，僅提供浴巾、毛巾、拖鞋、洗沐二合一、潤髮乳。'];
     const ROOM_DATA = [
-      {name:'標準客房',    price:4950, original:'NT$ 9,600 +10%',  quota:5, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Standard Double Room', tag:'Standard · 11坪',  specs:['一大床','11 坪'], desc:'色調柔和舒適的簡約風格，大片落地窗美景一覽無遺，讓您遠離塵世的喧囂。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/5.jpg'], detail:{size:'11.2坪（約 37 m²）',bed:'180×200 cm／一大床',occupancy:'2人，含大人及兒童',childPolicy:'每房至多招待兩位未滿6歲兒童免費入住（標準客房招待乙位）',intro:['色調柔和舒適的簡約風','大片落地窗美景一覽無遺','小黃星弄蝶翻翔，讓您遠離塵世的喧囂'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'標準雙床客房', price:4950, original:'NT$ 9,600 +10%',  quota:5, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/1.jpg', focus:'50% 48%', mobileFocus:'52% 46%', en:'Standard Twin Room',   tag:'Twin Standard · 11坪', specs:['二小床','11 坪'], desc:'雙床設計靈活彈性，適合商務夥伴同行，柔和簡約空間讓交流延伸至住宿。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/5.jpg'], detail:{size:'11.2坪（約 37 m²）',bed:'標準床×2／二小床',occupancy:'2人，含大人及兒童',childPolicy:'兒童同房恕不適用免費方案',intro:['雙床設計靈活彈性','適合商務夥伴或友伴同行','柔和簡約空間，讓交流延伸至住宿'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'高級客房',    price:5830, original:'NT$ 10,800 +10%', quota:4, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/1.jpg', focus:'50% 52%', mobileFocus:'54% 48%', en:'Superior Room',         tag:'Superior · 13坪',  specs:['二中床','13 坪'], desc:'更寬敞的空間，一整窗山色美景，夜晚眺望星空，讓思維在論壇後繼續沉澱。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/3.jpg'], detail:{size:'13坪（約 43 m²）',bed:'中型床×2／二中床',occupancy:'2人，含大人及兒童',intro:['更寬敞的舒適空間','一整窗山色美景盡收眼底','夜晚眺望星空，讓思維在論壇後繼續沉澱'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'河景客房',    price:6930, original:'NT$ 12,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/1.jpg', focus:'50% 48%', mobileFocus:'52% 44%', en:'River View Room',       tag:'River View · 13坪', specs:['二中床','13 坪'], desc:'無垠淡水河景正面迎向房間，藍天白雲、山河盡收眼底，最受喜愛的河岸首選。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/3.jpg'], detail:{size:'13坪（約 43 m²）',bed:'中型床×2／二中床',occupancy:'2人，含大人及兒童',intro:['無垠淡水河景正面迎向房間','藍天白雲、山河盡收眼底','最受喜愛的河岸首選，極致景觀體驗'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'豪華客房',    price:8580,  original:'NT$ 15,800 +10%', quota:2, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/1.jpg',  focus:'56% 50%', mobileFocus:'60% 46%', en:'Deluxe Room',     tag:'Deluxe · 16坪',          specs:['二大床','16 坪'], desc:'最大坪數，依山傍水遠離塵囂，面海美景一覽無遺，陪襯您旅行的每段記憶。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/3.jpg'], detail:{size:'16坪（約 53 m²）',bed:'大型床×2／二大床',occupancy:'2人，含大人及兒童',intro:['最大坪數房型，依山傍水','山海美景一覽無遺','陪襯每段旅途中最珍貴的記憶'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'家庭套房',    price:11286, original:'NT$ 20,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Executive Suite', tag:'Executive Suite · 23坪',  specs:['二大床','23 坪','最多 4 人'], desc:'23坪典雅溫馨空間，乾濕分離浴缸，43吋壁掛電視，適合全家出遊共享天倫之樂。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/4.jpg'], detail:{size:'23坪（約 76 m²）',bed:'大型床×2／二大床',occupancy:'最多 4 人',intro:['23坪典雅溫馨空間','寬敞客廳與獨立臥室','乾濕分離設計，浴缸配備','適合全家出遊，共享天倫之樂'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'日式套房',    price:13899, original:'NT$ 25,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Japanese Suite',  tag:'Japanese Suite · 23坪',  specs:['四小床','23 坪','最多 4 人'], desc:'和式裝潢充滿禪風意境，面海寬敞明亮，四床設計適合家人或好友共同入住體驗自然氛圍。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/5.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/6.jpg'], detail:{size:'23坪（約 76 m²）',bed:'和式小床×4／四小床',occupancy:'最多 4 人',intro:['和式裝潢充滿禪風意境','面海寬敞明亮，自然光充足','四床設計適合家人或好友共同入住'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}}
+      {name:'標準客房',    price:4950, original:'NT$ 9,600 +10%',  quota:5, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Standard Double Room', tag:'Standard · 11坪',  specs:['一大床','11 坪'], desc:'色調柔和舒適的簡約風格，大片落地窗美景一覽無遺，讓您遠離塵世的喧囂。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/5.jpg'], detail:{size:'11.2坪（約 37 m²）',bed:'180×200 cm／一大床',occupancy:'2人，含大人及兒童',childPolicy:'每房至多招待兩位未滿6歲兒童免費入住（標準客房招待乙位）',intro:['色調柔和舒適的簡約風','大片落地窗美景一覽無遺','小黃星弄蝶翻翔，讓您遠離塵世的喧囂','自然，是真正美麗的力量。以 GREEN 綠意生態、森林行旅為房型概念'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'標準雙床客房', price:4950, original:'NT$ 9,600 +10%',  quota:5, image:'https://www.goldentulip-fabhotel.com.tw/room-detail/upload/room_list_pic/twL_room_26A30_jbh6wffcj3.jpg', focus:'50% 48%', mobileFocus:'52% 46%', en:'Standard Twin Room',   tag:'Twin Standard · 11坪', specs:['二小床','11 坪'], desc:'雙床設計靈活彈性，適合商務夥伴同行，柔和簡約空間讓交流延伸至住宿。', detail:{size:'11.2坪（約 37 m²）',bed:'標準床×2／二小床',occupancy:'2人，含大人及兒童',childPolicy:'兒童同房恕不適用免費方案',intro:['雙床設計靈活彈性','適合商務夥伴或友伴同行','柔和簡約空間，讓交流延伸至住宿'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'高級客房',    price:5830, original:'NT$ 10,800 +10%', quota:4, image:'https://www.goldentulip-fabhotel.com.tw/room-detail/upload/room_list_pic/twL_room_26A30_dzunddxdus.jpg', focus:'50% 52%', mobileFocus:'54% 48%', en:'Superior Room',         tag:'Superior · 13坪',  specs:['二中床','13 坪'], desc:'更寬敞的空間，一整窗山色美景，夜晚眺望星空，讓思維在論壇後繼續沉澱。', detail:{size:'13坪（約 43 m²）',bed:'中型床×2／二中床',occupancy:'2人，含大人及兒童',intro:['更寬敞的舒適空間','一整窗山色美景盡收眼底','夜晚眺望星空，讓思維在論壇後繼續沉澱'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'河景客房',    price:6930, original:'NT$ 12,800 +10%', quota:3, image:'https://www.goldentulip-fabhotel.com.tw/room-detail/upload/room_list_pic/twL_room_26A30_qp7sci8b6y.jpg', focus:'50% 48%', mobileFocus:'52% 44%', en:'River View Room',       tag:'River View · 13坪', specs:['二中床','13 坪'], desc:'無垠淡水河景正面迎向房間，藍天白雲、山河盡收眼底，最受喜愛的河岸首選。', detail:{size:'13坪（約 43 m²）',bed:'中型床×2／二中床',occupancy:'2人，含大人及兒童',intro:['無垠淡水河景正面迎向房間','藍天白雲、山河盡收眼底','最受喜愛的河岸首選，極致景觀體驗'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'豪華客房',    price:8580,  original:'NT$ 15,800 +10%', quota:2, image:'https://www.goldentulip-fabhotel.com.tw/room-detail/upload/room_list_pic/twL_room_26A30_rndksdvad3.jpg',  focus:'56% 50%', mobileFocus:'60% 46%', en:'Deluxe Room',     tag:'Deluxe · 16坪',          specs:['二大床','16 坪'], desc:'最大坪數，依山傍水遠離塵囂，面海美景一覽無遺，陪襯您旅行的每段記憶。', detail:{size:'16坪（約 53 m²）',bed:'大型床×2／二大床',occupancy:'2人，含大人及兒童',intro:['最大坪數房型，依山傍水','山海美景一覽無遺','陪襯每段旅途中最珍貴的記憶'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'家庭套房',    price:11286, original:'NT$ 20,800 +10%', quota:3, image:'https://www.goldentulip-fabhotel.com.tw/room-detail/upload/room_list_pic/twL_room_26A30_n8b8yxewrh.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Executive Suite', tag:'Executive Suite · 23坪',  specs:['二大床','23 坪','最多 4 人'], desc:'23坪典雅溫馨空間，乾濕分離浴缸，43吋壁掛電視，適合全家出遊共享天倫之樂。', detail:{size:'23坪（約 76 m²）',bed:'大型床×2／二大床',occupancy:'最多 4 人',intro:['23坪典雅溫馨空間','寬敞客廳與獨立臥室','乾濕分離設計，浴缸配備','適合全家出遊，共享天倫之樂'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'日式套房',    price:13899, original:'NT$ 25,800 +10%', quota:3, image:'https://www.goldentulip-fabhotel.com.tw/room-detail/upload/room_list_pic/twL_room_26A30_dazj7x34sd.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Japanese Suite',  tag:'Japanese Suite · 23坪',  specs:['四小床','23 坪','最多 4 人'], desc:'和式裝潢充滿禪風意境，面海寬敞明亮，四床設計適合家人或好友共同入住體驗自然氛圍。', detail:{size:'23坪（約 76 m²）',bed:'和式小床×4／四小床',occupancy:'最多 4 人',intro:['和式裝潢充滿禪風意境','面海寬敞明亮，自然光充足','四床設計適合家人或好友共同入住'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}}
     ];
 
     // ── 後台訂單暫存 + 目前篩選狀態 ──
@@ -1200,8 +1192,8 @@
             '<button class="detail-btn" type="button" data-name="' + room.name + '">詳細說明</button>' +
             '<div class="carousel-counter"><span class="cc-cur">1</span> / ' + room.images.length + '</div>' +
             '<div class="ri-nav">' +
-            '<button class="carousel-btn carousel-prev" type="button" aria-label="上一張"><span>&#8249;</span></button>' +
-            '<button class="carousel-btn carousel-next" type="button" aria-label="下一張"><span>&#8250;</span></button>' +
+            '<button class="carousel-btn carousel-prev" type="button" aria-label="上一張">&#8249;</button>' +
+            '<button class="carousel-btn carousel-next" type="button" aria-label="下一張">&#8250;</button>' +
             '</div>' +
             '</div>';
         } else {
@@ -1387,7 +1379,7 @@
         els.roomDisplay.classList.add('ok');
       } else {
         els.selectedRoomBar.classList.remove('visible');
-        els.roomDisplay.textContent = '請點選上方房型卡片，或點擊「新增房間」選擇房型';
+        els.roomDisplay.textContent = '← 請點選上方房型卡片，或點擊「新增房間」選擇房型';
         els.roomDisplay.classList.remove('ok');
         updateRoomPreview('');
       }
