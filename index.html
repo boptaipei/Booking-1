@@ -3,13 +3,6 @@
  <head>
   <meta property="og:title" content="2026 商明領袖論壇｜將捷鬱金香住宿預訂">
   <meta property="og:description" content="2026 商明領袖論壇專屬住房優惠">
-<<<<<<< Updated upstream
-  <meta property="og:url" content="https://boptaipei.biz/8yanry">
-  <meta property="og:image" content="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/og_image.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2026 商明領袖論壇｜將捷鬱金香住宿預訂</title>
-=======
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://boptaipei.biz/8yanry">
   <meta property="og:image" content="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/og_image.png">
@@ -24,7 +17,6 @@
   <title>2026 商明領袖論壇｜將捷鬱金香住宿預訂</title>
   <link rel="icon" type="image/png" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
   <link rel="apple-touch-icon" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
->>>>>>> Stashed changes
 
   <!-- ── 字型載入：Google Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1157,13 +1149,6 @@
     window.addEventListener('pageshow', function() {
       window.scrollTo(0, 0);
     });
-<<<<<<< Updated upstream
-
-    // ── 後台權限層級（super = 網站維護，admin = 管理者） ──
-    const ADMIN_ROLES = { 'boclayla': 'super', 'boc0513': 'admin' };
-    var currentRole = null;
-=======
->>>>>>> Stashed changes
 
     // ── 房型資料（名稱、特約價、官網原價、名額、圖片、英文名、規格、說明） ──
     const HOTEL_NOTICES = ['入住時間 16:00 後，退房時間 11:00 前。','依菸害防治法，本酒店全面禁菸。','價格及內容有所異動時，不再另行通知。','免費提供嬰兒床、嬰兒澡盆及奶瓶消毒鍋（須事先預定）。','除導盲犬外，酒店禁止攜帶寵物進入。','另有無障礙空間設計客房，歡迎提前預訂。','配合政府政策，酒店自 2023/12/1 起不提供一次性拋棄式備品，僅提供浴巾、毛巾、拖鞋、洗沐二合一、潤髮乳。'];
@@ -1664,213 +1649,6 @@
       return localStorage.getItem('open_' + name) !== 'false';
     }
 
-<<<<<<< Updated upstream
-    // ── 建立各房型名額控制卡片 ──
-    function buildQuotaGrid() {
-      els.quotaGrid.innerHTML = ROOM_DATA.map(function(room) {
-        const safe = room.name.replace(/\s/g, '');
-        return '<div class="quota-card">' +
-          '<p class="quota-name">' + room.name + '</p>' +
-          '<div class="quota-row"><span>名額上限</span><input id="quota_' + safe + '" type="number" min="0" max="99" value="' + getQuota(room.name) + '"><button type="button" onclick="saveQuota(\'' + room.name + '\')">儲存</button></div>' +
-          '<div class="toggle-wrap"><label class="toggle"><input type="checkbox" ' + (getOpen(room.name) ? 'checked' : '') + ' onchange="toggleRoom(\'' + room.name + '\', this.checked)"><span class="toggle-slider"></span></label><span class="toggle-label" id="toggle_label_' + safe + '">' + (getOpen(room.name) ? '開放中' : '已關閉') + '</span></div>' +
-        '</div>';
-      }).join('');
-    }
-
-    // ── 後台 toast 通知（取代 alert） ──
-    function showToast(msg, type) {
-      const el = document.getElementById('adminToast');
-      el.textContent = msg;
-      el.className = 'admin-toast ' + (type || 'success') + ' show';
-      clearTimeout(el._t);
-      el._t = setTimeout(function() { el.classList.remove('show'); }, 2800);
-    }
-
-    // ── 儲存名額設定到 localStorage ──
-    function saveQuota(name) {
-      const id = 'quota_' + name.replace(/\s/g, '');
-      const value = document.getElementById(id).value;
-      localStorage.setItem('q_' + name, value);
-      syncRoomAvailability();
-      showToast('「' + name + '」名額已更新為 ' + value + ' 間');
-    }
-
-    // ── 切換房型開放/關閉狀態 ──
-    function toggleRoom(name, open) {
-      localStorage.setItem('open_' + name, open ? 'true' : 'false');
-      document.getElementById('toggle_label_' + name.replace(/\s/g, '')).textContent = open ? '開放中' : '已關閉';
-      syncRoomAvailability();
-    }
-
-    // ── 示範用假資料（尚未連接後台時顯示） ──
-    function demoBookings() {
-      return [
-        {timestamp:'2026/04/10 09:32', contactName:'林○○', companyName:'某科技',  mobile:'0912-XXX', roomType:'河景客房', checkIn:'2026-05-12', checkOut:'2026-05-14', notes:'',      status:'已確認'},
-        {timestamp:'2026/04/11 14:18', contactName:'王○○', companyName:'○○醫美', mobile:'0988-XXX', roomType:'豪華客房', checkIn:'2026-05-12', checkOut:'2026-05-13', notes:'需停車', status:'待確認'}
-      ];
-    }
-
-    // ── 載入後台資料（從 Google Sheet 或 localStorage） ──
-    async function loadAdminData() {
-      try {
-        if (endpoint()) {
-          const res = await fetch(endpoint() + '?action=getBookings');
-          const json = await res.json();
-          adminBookings = json.data || [];
-        } else {
-          const cached = JSON.parse(localStorage.getItem('booking_request_preview_list') || 'null');
-          adminBookings = cached && cached.length ? cached : demoBookings();
-        }
-      } catch (error) {
-        adminBookings = demoBookings();
-      }
-      updateStats();
-      renderBookingTable();
-      syncRoomAvailability();
-      if (els.adminPanel.style.display === 'block') {
-        showToast(endpoint() ? '訂單資料已同步' : '已載入本機預覽資料');
-      }
-    }
-
-    // ── 更新統計數字卡片 ──
-    function updateStats() {
-      els.statTotal.textContent     = String(adminBookings.length);
-      els.statConfirmed.textContent = String(adminBookings.filter(function(item) { return item.status === '已確認'; }).length);
-      els.statPending.textContent   = String(adminBookings.filter(function(item) { return item.status === '待確認'; }).length);
-      const today = new Date().toLocaleDateString('zh-TW');
-      els.statToday.textContent = String(adminBookings.filter(function(item) { return String(item.timestamp || '').indexOf(today) > -1; }).length);
-    }
-
-    // ── 訂單列表篩選切換 ──
-    function filterBookings(status, btn) {
-      currentFilter = status;
-      Array.from(document.querySelectorAll('.filter-btn')).forEach(function(el) { el.classList.remove('active'); });
-      btn.classList.add('active');
-      renderBookingTable();
-    }
-
-    // ── 格式化訂單建立時間（年/月/日 時:分） ──
-    function fmtTimestamp(str) {
-      if (!str) return '—';
-      const s = String(str).trim();
-      const p = function(n) { return String(n).padStart(2,'0'); };
-      // ISO format: "2026-04-19T10:32:45" or "2026-04-19T10:32:45.000Z"
-      const iso = s.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
-      if (iso) return iso[1] + '/' + iso[2] + '/' + iso[3] + ' ' + iso[4] + ':' + iso[5];
-      // zh-TW locale: "2026/4/19 上午10:32:45"
-      const m = s.match(/(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})\s+(上午|下午)?(\d{1,2}):(\d{2})/);
-      if (m) {
-        var h = parseInt(m[5]);
-        if (m[4] === '下午' && h < 12) h += 12;
-        if (m[4] === '上午' && h === 12) h = 0;
-        return m[1] + '/' + p(m[2]) + '/' + p(m[3]) + ' ' + p(h) + ':' + m[6];
-      }
-      return s.replace('T', ' ').substring(0, 16);
-    }
-
-    // ── 格式化日期（年/月/日） ──
-    function fmtDate(str) {
-      if (!str) return '—';
-      const m = String(str).match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
-      if (m) return m[1] + '/' + String(m[2]).padStart(2,'0') + '/' + String(m[3]).padStart(2,'0');
-      return String(str);
-    }
-
-    // ── 渲染訂單表格（依目前篩選狀態） ──
-    function renderBookingTable() {
-      const rows = currentFilter === 'all' ? adminBookings : adminBookings.filter(function(item) { return item.status === currentFilter; });
-      if (!rows.length) {
-        els.bookingTableBody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:40px;color:var(--text-4)">無符合紀錄</td></tr>';
-        return;
-      }
-      els.bookingTableBody.innerHTML = rows.map(function(item, index) {
-        const cls = item.status === '已確認' ? 'confirmed' : item.status === '已取消' ? 'cancelled' : item.status === '待付款' ? 'unpaid' : item.status === '已付款' ? 'paid' : 'pending';
-        const real = adminBookings.indexOf(item);
-        return '<tr>' +
-          '<td data-label="#">' + (index + 1) + '</td>' +
-          '<td data-label="時間" class="ts-cell">' + fmtTimestamp(item.timestamp) + '</td>' +
-          '<td data-label="姓名" style="font-weight:500">' + (item.contactName || '—') + '</td>' +
-          '<td data-label="公司">' + (item.companyName || '—') + '</td>' +
-          '<td data-label="手機">' + (item.mobile || '—') + '</td>' +
-          '<td data-label="房型">' + (item.roomType || '—') + '</td>' +
-          '<td data-label="入住">' + fmtDate(item.checkIn) + '</td>' +
-          '<td data-label="退房">' + fmtDate(item.checkOut) + '</td>' +
-          '<td data-label="狀態"><span class="badge ' + cls + '">' + (item.status || '待確認') + '</span></td>' +
-          '<td data-label="備註" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + (item.notes || '—') + '</td>' +
-          '<td data-label="操作"><div class="ops-cell">' +
-          '<select class="status-select" onchange="updateBookingStatus(' + real + ', this.value)">' +
-          ['待確認','已確認','待付款','已付款','已取消'].map(function(s) { return '<option' + (item.status === s ? ' selected' : '') + '>' + s + '</option>'; }).join('') +
-          '</select>' +
-          (pendingDelete === real
-            ? '<div class="del-confirm"><span class="del-confirm-label">確定刪除？</span><button class="del-confirm-btn" onclick="confirmDeleteBooking(' + real + ')">確定</button><button class="del-cancel-btn" onclick="cancelDeleteBooking()">取消</button></div>'
-            : '<button class="del-btn" onclick="requestDeleteBooking(' + real + ')">刪除</button>') +
-          '</div></td>' +
-        '</tr>';
-      }).join('');
-    }
-
-    // ── 更新單筆訂單狀態（同步到後台或 localStorage） ──
-    async function updateBookingStatus(index, status) {
-      adminBookings[index].status = status;
-      updateStats();
-      renderBookingTable();
-      syncRoomAvailability();
-      if (endpoint()) {
-        try {
-          await fetch(endpoint(), {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'text/plain' },
-            body: JSON.stringify({ action:'updateStatus', index:index, status:status })
-          });
-        } catch (error) {}
-      } else {
-        localStorage.setItem('booking_request_preview_list', JSON.stringify(adminBookings));
-      }
-    }
-
-    // ── 刪除訂單：第一步，顯示確認 ──
-    function requestDeleteBooking(index) {
-      pendingDelete = index;
-      renderBookingTable();
-    }
-
-    // ── 刪除訂單：取消 ──
-    function cancelDeleteBooking() {
-      pendingDelete = -1;
-      renderBookingTable();
-    }
-
-    // ── 刪除訂單：確認執行 ──
-    async function confirmDeleteBooking(index) {
-      pendingDelete = -1;
-      adminBookings.splice(index, 1);
-      updateStats();
-      renderBookingTable();
-      syncRoomAvailability();
-      if (endpoint()) {
-        try {
-          await fetch(endpoint(), {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'text/plain' },
-            body: JSON.stringify({ action: 'deleteRow', index: index })
-          });
-        } catch (error) {}
-      } else {
-        localStorage.setItem('booking_request_preview_list', JSON.stringify(adminBookings));
-      }
-      showToast('訂單已刪除');
-    }
-
-    // ── 儲存 Apps Script URL 到 localStorage ──
-    function saveScriptUrl() {
-      localStorage.setItem('gc_u', els.scriptUrlInput.value.trim());
-      showToast('Apps Script 網址已儲存');
-    }
-
-=======
->>>>>>> Stashed changes
     // ── 同步各房型剩餘名額（計算已確認/待確認筆數，更新房卡狀態） ──
     function syncRoomAvailability() {
       ROOM_DATA.forEach(function(room) {
@@ -1925,7 +1703,7 @@
         clearTimeout(clickTimer);
         if (clickCount >= 5) {
           clickCount = 0;
-          window.location.href = 'admin.html';
+          window.location.href = 'https://2026boc.netlify.app/admin.html';
           return;
         }
         clickTimer = setTimeout(function() { clickCount = 0; }, 2500);
