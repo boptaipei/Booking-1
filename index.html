@@ -371,8 +371,10 @@
     .policy-ul li { position:relative; padding-left:16px; font-size:13px; font-weight:400; color:var(--text-3); line-height:1.8; }
     .policy-ul li::before { content:'—'; position:absolute; left:0; color:#ffcc03; }
     .sub-btn { width:100%; padding:18px; background:var(--text); color:var(--white); border:none; margin-top:32px; cursor:pointer; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:14px; }
+    .back-register-btn { display:flex; align-items:center; justify-content:center; width:100%; padding:18px; margin-top:35px; background:transparent; border:1px solid var(--line); color:var(--text-4); font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; transition:color .2s, border-color .2s; }
+    .back-register-btn:hover { color:#ffcc03; border-color:#ffcc03; }
     .sub-note { text-align:center; margin-top:14px; font-family:'Geist',sans-serif; font-size:12px; font-weight:500; letter-spacing:.03em; color:var(--text-4); line-height:1.8; }
-    .form-tools { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:8px; }
+    .form-tools { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:20px; }
     .jump-rooms { font-family:'Geist',sans-serif; font-size:12px; font-weight:500; letter-spacing:.03em; color:var(--text-4); cursor:pointer; }
     .guest-list { display:flex; flex-direction:column; gap:10px; }
     .guest-row { display:flex; gap:10px; align-items:center; }
@@ -1092,6 +1094,7 @@
       <div class="status-box" id="submitStatus"></div>
       <button type="submit" class="sub-btn" id="submitBtn"><span>Submit Booking Request</span><span>→</span></button>
       <p class="sub-note">送出後將寄送確認通知至您的信箱，請確認電子信箱填寫正確。此表單為需求提交，實際訂房仍以商明回覆為準。</p>
+      <a href="#" class="back-register-btn">← 返回報名頁</a>
      </form>
     </div>
    </section>
