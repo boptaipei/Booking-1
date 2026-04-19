@@ -269,9 +269,10 @@
     .rmo-orig { font-family:'Geist',sans-serif; font-size:10px; color:var(--text-4); text-decoration:line-through; margin-top:1px; }
     .rmo-add-btn { background:var(--text); color:var(--white); border:none; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:13px 22px; cursor:pointer; transition:.2s; white-space:nowrap; }
     .rmo-add-btn:hover { background:var(--yellow); color:var(--text); }
-    @media (max-width:600px) {
+    @media (max-width:680px) {
       .room-modal-overlay { padding:0; align-items:flex-end; }
-      .room-modal { max-width:100%; max-height:93vh; }
+      .room-modal { max-width:100%; max-height:93vh; flex-direction:column; }
+      .rmo-media-col { width:100%; flex-shrink:0; border-right:none; border-bottom:1px solid var(--line-2); height:220px; }
       .rmo-cols { grid-template-columns:1fr; }
       .rmo-col-right { border-left:none; padding-left:0; border-top:1px solid var(--line-2); padding-top:14px; margin-top:4px; }
       .rmo-amenities { grid-template-columns:repeat(2,1fr); }
@@ -1054,56 +1055,60 @@
   <div class="room-modal-overlay" id="roomModalOverlay">
     <div class="room-modal" id="roomModal">
       <button class="rmo-close" id="rmoClose" type="button" aria-label="關閉">&#215;</button>
-      <!-- 頂部圖片輪播 -->
-      <div class="rmo-carousel" id="rmoCarousel">
-        <div class="carousel-track" id="rmoTrack"></div>
-        <div class="c-dots" id="rmoDots"></div>
-      </div>
-      <!-- 圖片下方導覽列 -->
-      <div class="rmo-ctrl" id="rmoCtrl">
-        <span></span>
-        <div class="rmo-counter" id="rmoCounter"></div>
-        <div class="rmo-nav">
-          <button class="c-btn c-prev" id="rmoPrev" type="button"><span>&#8249;</span></button>
-          <button class="c-btn c-next" id="rmoNext" type="button"><span>&#8250;</span></button>
+      <!-- 左欄：圖片輪播 -->
+      <div class="rmo-media-col">
+        <div class="rmo-carousel" id="rmoCarousel">
+          <div class="carousel-track" id="rmoTrack"></div>
+          <div class="c-dots" id="rmoDots"></div>
         </div>
-      </div>
-      <!-- 可捲動文字區 -->
-      <div class="rmo-scroll">
-        <div class="rmo-body">
-          <div class="rmo-header-row">
-            <div class="rmo-header-left">
-              <p class="rmo-tag" id="rmoTag"></p>
-              <p class="rmo-en" id="rmoEn"></p>
-              <h2 class="rmo-name" id="rmoName"></h2>
-            </div>
-          </div>
-          <div class="rmo-specs" id="rmoSpecs"></div>
-          <div class="rmo-cols">
-            <div class="rmo-col-left">
-              <p class="rmo-sec-title">房型介紹</p>
-              <p class="rmo-intro" id="rmoIntro"></p>
-              <div class="rmo-room-detail" id="rmoRoomDetail"></div>
-            </div>
-            <div class="rmo-col-right">
-              <p class="rmo-sec-title">設施 / 服務</p>
-              <div class="rmo-amenities" id="rmoAmenities"></div>
-            </div>
-          </div>
-          <div style="border-top:1px solid var(--line-2); padding-top:16px; margin-top:4px;">
-            <p class="rmo-sec-title">訂房須知</p>
-            <ol class="rmo-notices-list" id="rmoNotices"></ol>
+        <!-- 圖片下方導覽列 -->
+        <div class="rmo-ctrl" id="rmoCtrl">
+          <span></span>
+          <div class="rmo-counter" id="rmoCounter"></div>
+          <div class="rmo-nav">
+            <button class="c-btn c-prev" id="rmoPrev" type="button"><span>&#8249;</span></button>
+            <button class="c-btn c-next" id="rmoNext" type="button"><span>&#8250;</span></button>
           </div>
         </div>
       </div>
-      <!-- 底部固定：價格 + 新增按鈕 -->
-      <div class="rmo-ftr-bar">
-        <div>
-          <p class="rmo-price-lbl">商明特約優惠價 / 晚</p>
-          <p class="rmo-price" id="rmoPrice"></p>
-          <p class="rmo-orig" id="rmoOrig"></p>
+      <!-- 右欄：文字 + 底部 -->
+      <div class="rmo-text-col">
+        <div class="rmo-scroll">
+          <div class="rmo-body">
+            <div class="rmo-header-row">
+              <div class="rmo-header-left">
+                <p class="rmo-tag" id="rmoTag"></p>
+                <p class="rmo-en" id="rmoEn"></p>
+                <h2 class="rmo-name" id="rmoName"></h2>
+              </div>
+            </div>
+            <div class="rmo-specs" id="rmoSpecs"></div>
+            <div class="rmo-cols">
+              <div class="rmo-col-left">
+                <p class="rmo-sec-title">房型介紹</p>
+                <p class="rmo-intro" id="rmoIntro"></p>
+                <div class="rmo-room-detail" id="rmoRoomDetail"></div>
+              </div>
+              <div class="rmo-col-right">
+                <p class="rmo-sec-title">設施 / 服務</p>
+                <div class="rmo-amenities" id="rmoAmenities"></div>
+              </div>
+            </div>
+            <div style="border-top:1px solid var(--line-2); padding-top:16px; margin-top:4px;">
+              <p class="rmo-sec-title">訂房須知</p>
+              <ol class="rmo-notices-list" id="rmoNotices"></ol>
+            </div>
+          </div>
         </div>
-        <button class="rmo-add-btn" id="rmoAddBtn" type="button">新增此房型</button>
+        <!-- 底部固定：價格 + 新增按鈕 -->
+        <div class="rmo-ftr-bar">
+          <div>
+            <p class="rmo-price-lbl">商明特約優惠價 / 晚</p>
+            <p class="rmo-price" id="rmoPrice"></p>
+            <p class="rmo-orig" id="rmoOrig"></p>
+          </div>
+          <button class="rmo-add-btn" id="rmoAddBtn" type="button">新增此房型</button>
+        </div>
       </div>
     </div>
   </div>
